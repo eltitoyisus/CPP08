@@ -45,16 +45,12 @@ class Span {
 
 class SpanFullException : public std::exception {
 	public:
-		virtual const char* what() const throw() {
-			return "Span is full";
-		}
+		virtual const char* what() const throw();
 };
 
 class NoSpanFoundException : public std::exception {
 	public:
-		virtual const char* what() const throw() {
-			return "No span can be found";
-		}
+		virtual const char* what() const throw();
 };
 
 #endif

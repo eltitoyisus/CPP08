@@ -25,33 +25,36 @@
 // 	std::cout << *it << std::endl;
 // }
 
+const char* ValueNotFoundException::what() const throw() {
+	return "Value not found";
+}
 
 int main() {
-    std::vector<int> vec;
-    vec.push_back(10);
-    vec.push_back(20);
-    vec.push_back(30);
-    vec.push_back(40);
-    vec.push_back(50);
+	std::vector<int> vec;
+	vec.push_back(10);
+	vec.push_back(20);
+	vec.push_back(30);
+	vec.push_back(40);
+	vec.push_back(50);
 
-    std::list<int> lst;
-    lst.push_back(5);
-    lst.push_back(15);
-    lst.push_back(25);
-    lst.push_back(35);
-    lst.push_back(45);
+	std::list<int> lst;
+	lst.push_back(5);
+	lst.push_back(15);
+	lst.push_back(25);
+	lst.push_back(35);
+	lst.push_back(45);
 
-    try {
-        std::vector<int>::const_iterator itVec = easyFind(vec, 30);
-        std::cout << *itVec << std::endl;
-    } catch (const std::exception& e) {
-        std::cout << e.what() << std::endl;
-    }
+	try {
+		std::vector<int>::const_iterator itVec = easyFind(vec, 30);
+		std::cout << *itVec << std::endl;
+	} catch (const std::exception& e) {
+		std::cout << e.what() << std::endl;
+	}
 
-    try {
-        std::list<int>::const_iterator itLst = easyFind(lst, 30);
-        std::cout << *itLst << std::endl;
-    } catch (const std::exception& e) {
-        std::cout << e.what() << std::endl;
-    }
+	try {
+		std::list<int>::const_iterator itLst = easyFind(lst, 30);
+		std::cout << *itLst << std::endl;
+	} catch (const std::exception& e) {
+		std::cout << e.what() << std::endl;
+	}
 }

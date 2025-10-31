@@ -76,3 +76,12 @@ int Span::longestSpan() {
 	}
 	return max - min;
 }
+
+
+const char* SpanFullException::what() const throw() {
+	return "Span is full";
+}
+
+const char* NoSpanFoundException::what() const throw() {
+	return "Span can't be found";
+}

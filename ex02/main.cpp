@@ -27,8 +27,7 @@ int main () {
 	MutantStack<int>::iterator ite = mstack.end();
 	++it;
 	--it;
-	while (it != ite)
-	{
+	while (it != ite) {
 	std::cout << *it << std::endl;
 	++it;
 	}
