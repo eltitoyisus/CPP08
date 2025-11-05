@@ -22,3 +22,7 @@ typename T::const_iterator easyFind(const T& container, int i) {
 	// if no occourrence is found throw exceptiion with a value
 	return it;
 }
+
+const char* ValueNotFoundException::what() const throw() {
+	return "Value not found";
+}

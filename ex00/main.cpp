@@ -25,10 +25,6 @@
 // 	std::cout << *it << std::endl;
 // }
 
-const char* ValueNotFoundException::what() const throw() {
-	return "Value not found";
-}
-
 int main() {
 	std::vector<int> vec;
 	vec.push_back(10);

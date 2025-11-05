@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "Span.hpp"
+#include <algorithm>
 
 Span::Span() : _N(0), _array(NULL), _current(0) {}
 
@@ -52,29 +53,32 @@ void Span::addNumber(int number) {
 int Span::shortestSpan() {
 	if (_current <= 1)
 		throw NoSpanFoundException();
+	int *sorted = new int[_current];
+	for (unsigned int i = 0; i < _current; i++) {
+		sorted[i] = _array[i];
+	}
+	std::sort(sorted, sorted + _current);
 	int minSpan = INT_MAX;
 	for (unsigned int i = 0; i < _current - 1; i++) {
-		for (unsigned int j = i + 1; j < _current; j++) {
-			int span = abs(_array[i] - _array[j]);
-			if (span < minSpan)
-				minSpan = span;
-		}
+		int span = sorted[i + 1] - sorted[i];
+		if (span < minSpan)
+			minSpan = span;
 	}
+	delete[] sorted;
 	return minSpan;
 }
 
 int Span::longestSpan() {
 	if (_current <= 1)
 		throw NoSpanFoundException();
-	int min = _array[0];
-	int max = _array[0];
-	for (unsigned int i = 1; i < _current; i++) {
-		if (_array[i] < min)
-			min = _array[i];
-		if (_array[i] > max)
-			max = _array[i];
+	int *sorted = new int[_current];
+	for (unsigned int i = 0; i < _current; i++) {
+		sorted[i] = _array[i];
 	}
-	return max - min;
+	std::sort(sorted, sorted + _current);
+	int result = sorted[_current - 1] - sorted[0];
+	delete[] sorted;
+	return result;
 }
 
 
